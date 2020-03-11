@@ -15,7 +15,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -32,16 +36,20 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     RouterModule.forRoot(
       [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'search', component: SearchLocationComponent },
-      { path: 'details/:id', component: WeatherDetailsComponent },
-      { path: 'forecast/:id', component: ForecastComponent },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+        { path: 'dashboard', component: DashboardComponent },
+        { path: 'search', component: SearchLocationComponent },
+        { path: 'details/:id', component: WeatherDetailsComponent },
+        { path: 'forecast/:id', component: ForecastComponent },
+        { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
       ]),
-      MatToolbarModule,
-      MatButtonModule,
-      MatIconModule,
-      MatCardModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
