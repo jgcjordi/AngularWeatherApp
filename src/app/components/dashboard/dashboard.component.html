@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <span>My Weather</span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button (click)="addLocation()">
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
+<app-weather-card *ngFor="let location of storeService.listLocations()" [location]="location" (removed)="removeLocation($event)">
+</app-weather-card>
