@@ -1,1 +1,32 @@
-<p>weather-details works!</p>
+<mat-toolbar color="primary">
+    <button (click)="back()" mat-button>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Wheather details</span>
+</mat-toolbar>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{location.name}}</mat-card-title>
+        <mat-card-subtitle>{{location.country}}</mat-card-subtitle>
+        <div>
+            <button mat-icon-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="temps-icon">
+            <div class="temp-max-min">
+                <div *ngIf="info.temp_max" class="temp-max">{{info?.temp_max}}ºC</div>
+                <div *ngIf="info.temp_min" class="temp-min">{{info?.temp_min}}ºC</div>
+            </div>
+            <span>{{info?.temp}}ºC</span>
+            <img [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">
+        </div>
+        <div class="other-details">
+            <div *ngIf="info.desc">{{info.desc}}</div>
+            <div *ngIf="info.humidity">HUMIDITY: {{info?.humidity}}%</div>
+            <div *ngIf="info.clouds">CLOUDS: {{info?.clouds}}%</div>
+            <div *ngIf="info.pressure">PRESSURE: {{info?.pressure}}hPa</div>
+            <div *ngIf="info.wind">WIND: {{info?.wind}}km/h</div>
+        </div>
+    </mat-card-content>
+</mat-card>

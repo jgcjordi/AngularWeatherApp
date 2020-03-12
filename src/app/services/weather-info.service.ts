@@ -12,11 +12,11 @@ export class WeatherInfoService {
     console.log(`findCurrentWeather(${location.name})`);
     let info = {
       ts: Date.now(),
-      desc: 'scattered clouds',
+      desc: 'Scattered clouds',
       icon: '09d',
       temp: 13, //main.temp
-      temp_max: 13, // main.temp_max
-      temp_min: 13, // main.temp_min
+      temp_max: 14, // main.temp_max
+      temp_min: 12, // main.temp_min
       clouds: 75, // clouds.all
       humidity: 58, // main.humidity
       pressure: 1005, // main.pressure
