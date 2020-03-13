@@ -1,21 +1,40 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { WeatherLocation } from '../models/weather-location';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherLocationService {
-  constructor() { }
-  findLocation(desc: string, cb: (err: Error, locations: WeatherLocation[]) => void): void {
+  private key = '231d0f5c8558fe1d071df1af9ff915f3';
+  private url = `http://api.openweathermap.org/data/2.5/weather`;
+  constructor(private http: HttpClient) { }
+  findLocation(desc: string,
+    cb: (err: Error, locations: WeatherLocation[]) => void): void {
     console.log(`[WeatherLocationService] findLocation(${desc}`);
-    let location = {
-      id: 100,
-      lat: 38.71,
-      lon: -0.47,
-      name: 'Alcoy',
-      country: 'ES'
-    };
-    cb(null, [location]);
+    this.http.get<any>(this.url, {
+      params: { APPID: this.key, q: desc }
+    })
+      .subscribe(
+        (info) => {
+          console.log('[WeatherLocationService] findLocation() success.');
+          if (info) {
+            cb(null, [{
+              id: info.id,
+              lat: info.coord.lat,
+              lon: info.coord.lon,
+              name: info.name,
+              country: info.sys.country
+            }]);
+          } else {
+            cb(null, []);
+          }
+        },
+        (err) => {
+          console.log(err);
+          cb(err, null);
+        }
+      );
   }
 }
 

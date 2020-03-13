@@ -16,7 +16,24 @@ export class WeatherDetailsComponent implements OnInit {
   public location: WeatherLocation;
   public info: WeatherInfo;
 
-  constructor(private routeLocation:Location, private route:ActivatedRoute, private storeService:StoreService, private weatherInfoService: WeatherInfoService ) { }
+  constructor(private routeLocation:Location, private route:ActivatedRoute, private storeService:StoreService, private weatherInfoService: WeatherInfoService ) {
+    this.info = {
+      ts: null, // tiempo de adquisición (milisegundos)
+      desc: null, // descripción tiempo
+      icon: null, // icono para tiempo
+      temp: null, // temperatura
+      temp_max: null, // temperatura máxima
+      temp_min: null, // temperatura mínima
+      clouds: null, // % de nubes
+      humidity: null, // % humedad
+      pressure: null, // presión
+      wind: null, // velocidad viento
+      rain1h: null, // mm de lluvia por m2 a la hora
+      rain3h: null, // mm de lluvia por m2 en 3h
+      snow1h: null, // mm de nieve por m2 a la hora
+      snow3h: null // mm de nieve por m2 en 3h
+    };
+  }
 
   ngOnInit(): void {
     console.log('[WeatherDetailsComponent] ngOnInit()');
@@ -29,6 +46,7 @@ export class WeatherDetailsComponent implements OnInit {
     console.log('[WeatherDetailsComponent] refresh()');
     this.weatherInfoService.findCurrentWeather(this.location, (err, info) => {
       this.info = info;
+      console.log(this.info)
     });
   }
 

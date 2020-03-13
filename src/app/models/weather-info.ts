@@ -9,6 +9,9 @@ export interface WeatherInfo {
     humidity?: number; // % humedad
     pressure?: number; // presión
     wind?: number; // velocidad viento
-    rain?: number; // volumen de lluvia
-    snow?: number; // volumen de nieve
+    rain1h?: number; // volumen de lluvia mm/1h
+    rain3h?: number; // volumen de lluvia mm/3h
+    snow1h?: number; // volumen de nieve mm/1h
+    snow3h?: number; // volumen de nieve mm/3h
+
 }

@@ -19,14 +19,18 @@
                 <div *ngIf="info.temp_min" class="temp-min">{{info?.temp_min}}ºC</div>
             </div>
             <span>{{info?.temp}}ºC</span>
-            <img [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">
+            <img *ngIf="info.icon" [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">
         </div>
         <div class="other-details">
-            <div *ngIf="info.desc">{{info.desc}}</div>
+            <div *ngIf="info.desc">{{info?.desc}}</div>
             <div *ngIf="info.humidity">HUMIDITY: {{info?.humidity}}%</div>
             <div *ngIf="info.clouds">CLOUDS: {{info?.clouds}}%</div>
             <div *ngIf="info.pressure">PRESSURE: {{info?.pressure}}hPa</div>
             <div *ngIf="info.wind">WIND: {{info?.wind}}km/h</div>
+            <div *ngIf="info.rain1h">RAIN: {{info?.rain1h}}mm/1h</div>
+            <div *ngIf="info.rain3h">RAIN: {{info?.rain3h}}mm/3h</div>
+            <div *ngIf="info.snow1h">SNOW: {{info?.snow1h}}mm/1h</div>
+            <div *ngIf="info.snow3h">SNOW: {{info?.snow3h}}mm/3h</div>
         </div>
     </mat-card-content>
 </mat-card>

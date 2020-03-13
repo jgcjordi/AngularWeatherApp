@@ -7,22 +7,18 @@ import { WeatherLocation } from '../models/weather-location';
 export class StoreService {
   private locations: WeatherLocation[] = [];
   constructor() {
-    this.locations.push({
-      id: 100,
-      lat: 38.71,
-      lon: -0.47,
-      name: 'Alcoy',
-      country: 'ES'
-    });
+    this.getArrayLocationsFromBrowserStorage()
   }
   addLocation(location: WeatherLocation): void {
     console.log(`[StoreService] addLocation(${location.name}`);
     this.locations.push(location);
+    this.saveArrayLocationsInBrowserStorage()
   }
   removeLocation(id: number): void {
     console.log(`[StoreService] removeLocation(${id})`);
     let index = this.locations.findIndex((location => location.id === id));
     if (index !== -1) this.locations.splice(index, 1);
+    this.saveArrayLocationsInBrowserStorage()
   }
   listLocations(): WeatherLocation[] {
     console.log(`[StoreService] listLocation()`);
@@ -33,5 +29,13 @@ export class StoreService {
     let index = this.locations.findIndex((location => location.id === id));
     if (index !== -1) return this.locations[index];
     else return null;
+  }
+
+  getArrayLocationsFromBrowserStorage(){
+    if (localStorage.getItem('locations'))
+    this.locations = JSON.parse(localStorage.getItem('locations'));
+  }
+  saveArrayLocationsInBrowserStorage(){
+    localStorage.setItem('locations', JSON.stringify(this.locations));
   }
 }
