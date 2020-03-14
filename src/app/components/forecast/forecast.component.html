@@ -1,1 +1,8 @@
-<p>forecast works!</p>
+<mat-toolbar color="primary">
+    <button (click)="back()" mat-button>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Forecast</span>
+</mat-toolbar>
+<app-forecast-card *ngFor="let arrayday of arrayDaysForecast" [arrayday]="arrayday">
+</app-forecast-card>

@@ -1,0 +1,29 @@
+mat-card {
+    margin: 20px;
+}
+
+mat-card-title {
+    font-size: 1em !important;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.line-reading {
+    display: grid;
+    grid-template-columns: 6em 6em 6em;
+    align-items: center;
+}
+
+div {
+    text-align: center;
+}
+
+img {
+    align-self: center;
+}

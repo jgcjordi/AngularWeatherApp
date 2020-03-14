@@ -8,12 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WeatherInfoService {
   private key = '231d0f5c8558fe1d071df1af9ff915f3';
-  private url = `http://api.openweathermap.org/data/2.5/weather`;
+  private urlWeather = `http://api.openweathermap.org/data/2.5/weather`;
+  private urlForecast = `http://api.openweathermap.org/data/2.5/forecast`;
   constructor(private http: HttpClient) { }
   findCurrentWeather(location: WeatherLocation, cb: (err: Error, weatherInfo: WeatherInfo) => void): void {
     console.log(`[WeatherInfoService] findCurrentWeather(${location}`);
 
-    this.http.get<any>(this.url, {
+    this.http.get<any>(this.urlWeather, {
       params: { appid: this.key, id: location.id.toString(), units: "metric" }
     })
       .subscribe(
@@ -56,7 +57,6 @@ export class WeatherInfoService {
               if (info.snow["1h"]) weatherInfo.snow1h = info.snow["1h"]
               if (info.snow["3h"]) weatherInfo.snow3h = info.snow["3h"]
             }
-            console.log(info)
             cb(null, weatherInfo);
           } else {
             cb(null, null);
@@ -68,16 +68,39 @@ export class WeatherInfoService {
         }
       );
   }
-  findForecast(location: WeatherLocation, ini: number, end: number,
-    cb: (err: Error, forecast: WeatherInfo[]) => void): void {
-    console.log(`findForecast(${location.name},${ini},${end})`);
-    this.findCurrentWeather(location, (err, info) => {
-      if (err) cb(err, null);
-      else {
-        let forecast: WeatherInfo[] = [];
-        for (let i = 0; i < 6; i++) forecast.push(info);
-        cb(null, forecast);
-      }
-    });
+
+  findForecast(location: WeatherLocation, cb: (err: Error, weatherInfoList: WeatherInfo[]) => void): void {
+    console.log(`[WeatherInfoService] findCurrentWeather(${location}`);
+
+    this.http.get<any>(this.urlForecast, {
+      params: { appid: this.key, id: location.id.toString(), units: "metric" }
+    })
+      .subscribe(
+        (info) => {
+          console.log('[WeatherLocationService] findLocation() success.');
+          let weatherInfoList:WeatherInfo[] = []
+          if (info.list) {
+            let list = info.list
+            list.forEach(element => {
+              let weatherInfo = {
+                ts: null, // tiempo de adquisición (milisegundos)
+                icon: null, // icono para tiempo
+                temp: null, // temperatura
+              };
+              weatherInfo.ts = element.dt
+              weatherInfo.temp = element.main.temp
+              weatherInfo.icon = element.weather[0].icon
+              weatherInfoList.push(weatherInfo)
+            });
+            cb(null, weatherInfoList);
+          } else {
+            cb(null, null);
+          }
+        },
+        (err) => {
+          console.log(err);
+          cb(err, null);
+        }
+      );
   }
 }

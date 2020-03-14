@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{day}}, {{month}} {{nday}}, {{year}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="line-reading" *ngFor="let reading of arrayday">
+            <div>
+                {{getTime12h(reading.ts)}}
+            </div>
+            <div>
+                {{reading.temp}}ºC
+            </div>
+            <div>
+                <img *ngIf="reading.icon" [src]="'http://openweathermap.org/img/w/' + reading?.icon + '.png'">
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

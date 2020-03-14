@@ -16,7 +16,8 @@ export class WeatherDetailsComponent implements OnInit {
   public location: WeatherLocation;
   public info: WeatherInfo;
 
-  constructor(private routeLocation:Location, private route:ActivatedRoute, private storeService:StoreService, private weatherInfoService: WeatherInfoService ) {
+  constructor(private routeLocation:Location, private route:ActivatedRoute, 
+    private storeService:StoreService, private weatherInfoService: WeatherInfoService ) {
     this.info = {
       ts: null, // tiempo de adquisición (milisegundos)
       desc: null, // descripción tiempo
@@ -46,7 +47,6 @@ export class WeatherDetailsComponent implements OnInit {
     console.log('[WeatherDetailsComponent] refresh()');
     this.weatherInfoService.findCurrentWeather(this.location, (err, info) => {
       this.info = info;
-      console.log(this.info)
     });
   }
 
