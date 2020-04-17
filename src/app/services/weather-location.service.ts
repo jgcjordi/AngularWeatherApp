@@ -7,7 +7,7 @@ import { WeatherLocation } from '../models/weather-location';
 })
 export class WeatherLocationService {
   private key = '231d0f5c8558fe1d071df1af9ff915f3';
-  private url = `http://api.openweathermap.org/data/2.5/weather`;
+  private url = `https://api.openweathermap.org/data/2.5/weather`;
   constructor(private http: HttpClient) { }
   findLocation(desc: string,
     cb: (err: Error, locations: WeatherLocation[]) => void): void {

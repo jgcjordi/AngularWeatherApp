@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WeatherInfoService {
   private key = '231d0f5c8558fe1d071df1af9ff915f3';
-  private urlWeather = `http://api.openweathermap.org/data/2.5/weather`;
-  private urlForecast = `http://api.openweathermap.org/data/2.5/forecast`;
+  private urlWeather = `https://api.openweathermap.org/data/2.5/weather`;
+  private urlForecast = `https://api.openweathermap.org/data/2.5/forecast`;
   constructor(private http: HttpClient) { }
   findCurrentWeather(location: WeatherLocation, cb: (err: Error, weatherInfo: WeatherInfo) => void): void {
     console.log(`[WeatherInfoService] findCurrentWeather(${location}`);
