@@ -2,13 +2,13 @@
 
 [https://jgcjordi.github.io/AngularWeatherApp/](https://jgcjordi.github.io/AngularWeatherApp/)
 
-![image](https://raw.githubusercontent.com/jgcjordi/AngularWeatherApp/master/others-readmemd/tecnologies.png)
+![image](https://raw.githubusercontent.com/jgcjordi/AngularWeatherApp/master/others-readmemd/screenshots.png)
 
 ## Tecnologías Utilizadas
 
 Para el desarrollo de la web app progresiva se ha utilizado Angular, Angular Material, CSS3, JS, Typescript y el api de Open weather Map
 
-![image](https://raw.githubusercontent.com/jgcjordi/AngularWeatherApp/master/others-readmemd/screenshots.png)
+![image](https://raw.githubusercontent.com/jgcjordi/AngularWeatherApp/master/others-readmemd/tecnologies.png)
 
 ### Funcionalidades
 
