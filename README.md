@@ -1,27 +1,23 @@
-# MyWeatherApp
+# Web App, con Angualr, Angular Material y Open weather map Api
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+[https://jgcjordi.github.io/WebAppMyRoutesWithVue/](https://jgcjordi.github.io/WebAppMyRoutesWithVue/)
 
-## Development server
+![image](https://github.com/jgcjordi/WebAppMyRoutesWithVue/blob/master/readme_assets/web-app-schema.jpg?raw=true)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Tecnologías Utilizadas
 
-## Code scaffolding
+Para el desarrollo de la web app progresiva se ha utilizado Angular, Angular Material, CSS3, JS, Typescript y el api de Open weather Map
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![image](https://raw.githubusercontent.com/jgcjordi/WebAppMyRoutesWithVue/master/readme_assets/tecnologies.jpg)
 
-## Build
+### Funcionalidades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* En la ventana My Weather, se muestran las cardview con el tiempo actual de las localizaciones que se van añadiendo.
 
-## Running unit tests
+* En la ventana Add location, se permite añadir localizaciones mediante un buscador, en caso de no escribir bien el nombre de la ciudad, no la encontrara al pulsar sobre la lupa.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* En la ventana Forecast, se muestra una prediccion del tiempo de la ciudad seleccionada en el cardview.
 
-## Running end-to-end tests
+* En la ventana Wheather details, se muestra detalladamente el tiempo actual de la ciudad seleccionada en el cardview.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Se realiza un almacenamiento persistente de las ubicaciones añadidas en el browser storage.
